@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 
 import java.util.Date;
@@ -29,10 +30,6 @@ public class OrderitemController {
     public String orderItem(Model model, int cid ,String userName){
         System.out.println(cid);
         System.out.println(userName);
-
-
-
-
         model.addAttribute("cid",cid);
         model.addAttribute("userName",userName);
         return "orderItem";
@@ -57,5 +54,19 @@ public class OrderitemController {
         orderItemService.add(oi);
         return "redirect:/category?userName="+userName;
     }
+
+
+    @RequestMapping("orderItem2")
+    public
+    @ResponseBody  Orderitem orderItem2( int cid ,String userName){
+        Orderitem orderitem=new Orderitem();
+        orderitem.setCategoryId(cid);
+        orderitem.setUserName(userName);
+
+        return orderitem;
+    }
+
+
+
 
 }

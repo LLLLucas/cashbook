@@ -19,11 +19,11 @@
 
 
 
-    <input id="userName" name="userName" placeholder="手机/会员名/邮箱" type="text"><br/>
-    <input id="password" name="password" type="password" placeholder="密码" ><br/><br/><br/><br/>
+   用户名： <input id="userName" name="userName" placeholder="手机/会员名/邮箱" type="text"><br><br>
+    密码：<input id="password" name="password" type="password" placeholder="密码" ><br><br>
     <button type="submit">登录</button><br/>
     <span><font color="#a52a2a">${msg}</font></span><br/>
-    <span><font color="#a52a2a">${success}</font></span><br/>
+    <span><font color="#a52a2a">${success}</font></span>
 </form>
 <a href="register1">注册</a>
 

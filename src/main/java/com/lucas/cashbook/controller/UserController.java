@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.util.HtmlUtils;
 
@@ -40,29 +41,43 @@ public class UserController {
         return modelAndView;
 
     }
+    @RequestMapping("check")
+    public @ResponseBody
+    Boolean check(String userName) {
+        User user=userService.get(userName);
+
+        Boolean flag=false;
+        if(user==null){
+            flag=true;
+        }
+        return flag;
+
+
+
+
+    }
 
 
     @RequestMapping("register")
-    public String register(@RequestParam("userName")String userName, @RequestParam("password")
-            String password, Model model, HttpSession session){
+    public @ResponseBody String register(@RequestParam("userName")String userName, @RequestParam("password")
+            String password){
         userName = HtmlUtils.htmlEscape(userName);
-        User user=userService.get(userName);
+       // User user=userService.get(userName);
         //session.setAttribute("user",user);
         User user1=new User();
         user1.setUserName(userName);
         user1.setPaasword(password);
-        if(user==null){
+        if(user1!=null){
             userService.add(user1);
             User user2=userService.get(user1.getUserName());
             Totalitem totalitem=new Totalitem();
             totalitem.setUserId(user2.getId());
             totalitem.setTotalMoney(0.0f);
             totalItemService.add(totalitem);
-            model.addAttribute("success","注册成功");
-            return "login";
-        }else{
-            model.addAttribute("msg","用户名存在。请输入其他用户名");
-            return "register";
+            return "ok";
+
+        }else {
+            return null;
         }
 
 

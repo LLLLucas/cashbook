@@ -137,6 +137,7 @@ public class CategoryController {
         o.setCateName(category.getName());
         Date date=dateService.get(o.getDateId());
         o.setDate(date.getDate());
+        System.out.println("日期我看看"+o.getDate());
         System.out.println("你为什么不进来"+o.getUserName());
         List<Category> categories=categoryService.list();
         System.out.println("我就看看你进没进来呀 宝贝");
