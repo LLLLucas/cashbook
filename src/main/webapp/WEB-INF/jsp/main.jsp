@@ -17,6 +17,14 @@
 <head>
     <title>主頁面</title>
         <style type="text/css">
+            div{
+                text-align: center;
+            }
+            td{
+                text-align: center;
+            }
+
+
             .thinkcss-left{ float:right; border:1px solid #F00}
                               table
                               {
@@ -26,7 +34,7 @@
 </head>
 <body style="text-align:center;">
 <span class="thinkcss-left"> <font color="red">用户名：${sessionScope.user.userName}</font></span>
-<table border="0" align="center"><thead>
+<table  border="0" align="center"><thead>
 <tr>
     <td width="80">ID</td>
     <td width="80"></td>
@@ -47,14 +55,15 @@
         </tr>
     </c:forEach>
 </table>
-<table border="1" align="center"><thead>
+<a href="week_category">周查看</a>
+<table class="table" border="1" align="center"><thead>
 <tr>
     <td>ID</td>
     <td>用户名</td>
     <td>类型</td>
     <td width="300">日期</td>
     <td>金额</td>
-    <td>操作</td>
+    <td colspan="2">操作</td>
     <td></td>
 </tr>
 </thead>
@@ -63,7 +72,7 @@
             <td>${o.id}</td>
             <td>${o.userName}</td>
             <td>${o.cateName}</td>
-            <td>${o.date}</td>
+            <td>${o.shijian}</td>
             <td>${o.money}</td>
             <td><a href="#" onclick="editOrderItem(${o.id})"  data-toggle="modal" data-target="#myModal">修改</a>
             </td>
@@ -74,11 +83,13 @@
 </table>
 <br>
 <div>
-    <a href="?start=1">[首页]</a>
-    <a href="?start=${page.pageNum-1}">[上一页]</a>
-    <a href="?start=${page.pageNum+1}">[下一页]</a>
-    <a href="?start=${page.pages}">[末页]</a>
+    <ul class="pager">
+        <li><a href="?start=1" >[首页]</a></li>
+        <li><a href="?start=${page.pageNum-1}" >[上一页]</a></li>
+        <li><a href="?start=${page.pageNum+1}">[下一页]</a></li>
+        <li> <a href="?start=${page.pages}" >[末页]</a></li>
     <span>${page.pages}</span>
+    </ul>
 
 
 </div>
@@ -119,8 +130,9 @@
             $("#userName").val(data.userName);
             $("#userId").val(data.userId);
             $("#date").val(date);
-            $("#cateName").val(data.cateName);
-            $("#categoryId").val(data.categortId);
+           // $("#cateName").val(data.cateName);
+            $("#categoryId").val(data.categoryId);
+            $("#categoryId2").val(data.categoryId);
 
             $("#money").val(data.money);
 
@@ -147,18 +159,17 @@
                     <input type="hidden" name="userId" id="userId" ><br>
                     日期：<input type="text" name="date"  id="date"   disabled="disabled"><br>
                     <input type="hidden" name="dateId" id="dateId" ><br>
-                原来类别名称： <input type="text" id="cateName"><br>
-
-
+                <%--原来类别名称： <input type="text" id="cateName"><br>--%>
+                     <input type="hidden" id="categoryId2"><br>
 
               选择新的记账花费类型：
-                    <select name="categoryId"  id="categoryId">
+                    <select name="categoryId"  id="categoryId" name="categoryId">
                         <c:forEach items="${cs}" var="c">
-                            <option value="${c.id}" <%--<c:if test="${c.id==categoryId}">selected</c:if>--%>>${c.name}</option>
+                            <option value="${c.id}" <c:if test="${c.id==categoryId}">selected</c:if>>${c.name}</option>
                         </c:forEach>
                     </select><br>
-                    花费金额：<input type="number" name="money" id="money" >
-                    <button data-dismiss="modal" class="btn btn-primary" type="button">关闭</button>
+                    花费金额：<input type="number" name="money" id="money" ><br>
+                    <button data-dismiss="modal" class="btn btn-primary" type="button">关闭</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="submit" value="修改" class="btn btn-primary">
                 </form>
 
@@ -181,7 +192,7 @@
                     金额：<input type="number" name="money" id="money2">
                     <input type="hidden" name="userName" id="userName2">
                     <input type="hidden" name="cid" id="cid2"><br><br>
-                    <button data-dismiss="modal" class="btn btn-primary" type="button">关闭</button>
+                    <button data-dismiss="modal" class="btn btn-primary" type="button">关闭</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     <input type="submit" value="添加" class="btn btn-primary">
                 </form>
             </div>

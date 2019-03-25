@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 
+import java.util.Calendar;
 import java.util.Date;
 
 
@@ -34,19 +35,21 @@ public class OrderitemController {
         model.addAttribute("userName",userName);
         return "orderItem";
     }
-
     @RequestMapping("do_orderItem")
     public String doorderItem(Model model,int cid,String  userName,Float money){
-
         Date date=new Date();
         com.lucas.cashbook.pojo.Date date2=new com.lucas.cashbook.pojo.Date();
+        Calendar calendar = Calendar.getInstance();
+        calendar.setFirstDayOfWeek(Calendar.MONDAY);
+        calendar.setTime(date);
         date2.setDate(date);
-
         dateService.add(date2);
         com.lucas.cashbook.pojo.Date date3=dateService.get(date);
         System.out.println(date3.getId());
         Orderitem oi=new Orderitem();
+        oi.setWeekId(calendar.get(Calendar.WEEK_OF_YEAR));
         oi.setMoney(money);
+        oi.setMonthId(calendar.get(Calendar.MONDAY));
         oi.setDateId(date3.getId());
         User user=userService.get(userName);
         oi.setUserId(user.getId());

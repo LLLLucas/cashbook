@@ -32,6 +32,17 @@ public class OrderItemServiceImpl implements OrderItemService {
     }
 
     @Override
+    public List<Orderitem> list2(int weekId, int userId) {
+        OrderitemExample example=new OrderitemExample();
+
+        example.setOrderByClause("id asc");
+        example.createCriteria().andWeekIdEqualTo(weekId).andUserIdEqualTo(userId);
+        return orderitemMapper.selectByExample(example);
+    }
+
+
+
+    @Override
     public Orderitem get(int id) {
 
         return orderitemMapper.selectByPrimaryKey(id);

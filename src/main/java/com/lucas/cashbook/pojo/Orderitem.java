@@ -12,19 +12,15 @@ public class Orderitem {
     private Integer categoryId;
 
     private Integer dateId;
-    private String userName;
+
+    private Integer weekId;
+
+
+    private Integer monthId;
     private String cateName;
+    private String UserName;
     private Date date;
-
-    public String getDate2() {
-        return date2;
-    }
-
-    public void setDate2(String date2) {
-        this.date2 = date2;
-    }
-
-    private String date2;
+    private String shijian;
 
 
     public Integer getId() {
@@ -67,12 +63,36 @@ public class Orderitem {
         this.dateId = dateId;
     }
 
+    public Integer getWeekId() {
+        return weekId;
+    }
+
+    public void setWeekId(Integer weekId) {
+        this.weekId = weekId;
+    }
+
+    public Integer getMonthId() {
+        return monthId;
+    }
+
+    public void setMonthId(Integer monthId) {
+        this.monthId = monthId;
+    }
+
     public Date getDate() {
         return date;
     }
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getUserName() {
+        return UserName;
+    }
+
+    public void setUserName(String userName) {
+        UserName = userName;
     }
 
     public String getCateName() {
@@ -83,25 +103,11 @@ public class Orderitem {
         this.cateName = cateName;
     }
 
-    public String getUserName() {
-        return userName;
+    public String getShijian() {
+        return shijian;
     }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    @Override
-    public String toString() {
-        return "Orderitem{" +
-                "id=" + id +
-                ", money=" + money +
-                ", userId=" + userId +
-                ", categoryId=" + categoryId +
-                ", dateId=" + dateId +
-                ", userName='" + userName + '\'' +
-                ", cateName='" + cateName + '\'' +
-                ", date=" + date +
-                '}';
+    public void setShijian(String shijian) {
+        this.shijian = shijian;
     }
 }

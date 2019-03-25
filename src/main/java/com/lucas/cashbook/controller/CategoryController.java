@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.servlet.http.HttpSession;
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.HashMap;
 import java.util.List;
@@ -37,9 +38,8 @@ public class CategoryController {
     public String selCategory(Model model, @RequestParam(value = "start",defaultValue = "0")int start,
                               @RequestParam(value = "size",defaultValue = "5")int size,
                               String userName, HttpSession session){
-        if(start<=0){
-            start=1;
-        }
+
+
 
         User usera=(User)session.getAttribute("user");
         System.out.println(usera.getPaasword()+","+usera.getUserName());
@@ -61,13 +61,15 @@ public class CategoryController {
             Date date=dateService.get(s.getId());
 
             System.out.println("日期样式我看看："+date);
+            SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            String formatDate = df.format(date.getDate());
             s.setDate(date.getDate());
-
-
-
-
+            System.out.println("是第几月"+formatDate.substring(5,7));
+            s.setShijian(formatDate);
+            //s.setMonthId(Integer.valueOf(formatDate.substring(5,7)));
         }
         PageInfo<Orderitem> page=new PageInfo<>(ois);
+
         List<Orderitem> ois2=orderItemService.list(user.getId());
         Float sum=0.0f;
         for (Orderitem s:ois2

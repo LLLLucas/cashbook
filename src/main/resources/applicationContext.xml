@@ -51,9 +51,16 @@
         <property name="plugins">
             <array>
                 <bean class="com.github.pagehelper.PageInterceptor">
-                    <property name="properties">
+                    <property name="properties"  >
                         <!--使用下面的方式配置参数，一行配置一个 -->
                         <value>
+                           <!-- 以下代码是为了下一页大于总页数时，会自动停留在最后一页-->
+                           <!-- 以下代码是为了上一页小于第一页时，会自动停留在第一页-->
+                            helperDialect=mysql
+                            reasonable=true
+                            supportMethodsArguments=true
+                            params=count=countSql
+                            autoRuntimeDialect=true
                         </value>
                     </property>
                 </bean>
@@ -66,5 +73,6 @@
     <bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
         <property name="basePackage" value="com.lucas.cashbook.mapper"/>
     </bean>
+
 
 </beans>

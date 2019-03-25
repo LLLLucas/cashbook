@@ -403,6 +403,126 @@ public class OrderitemExample {
             addCriterion("dateId not between", value1, value2, "dateId");
             return (Criteria) this;
         }
+
+        public Criteria andWeekIdIsNull() {
+            addCriterion("weekId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdIsNotNull() {
+            addCriterion("weekId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdEqualTo(Integer value) {
+            addCriterion("weekId =", value, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdNotEqualTo(Integer value) {
+            addCriterion("weekId <>", value, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdGreaterThan(Integer value) {
+            addCriterion("weekId >", value, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("weekId >=", value, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdLessThan(Integer value) {
+            addCriterion("weekId <", value, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdLessThanOrEqualTo(Integer value) {
+            addCriterion("weekId <=", value, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdIn(List<Integer> values) {
+            addCriterion("weekId in", values, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdNotIn(List<Integer> values) {
+            addCriterion("weekId not in", values, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdBetween(Integer value1, Integer value2) {
+            addCriterion("weekId between", value1, value2, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andWeekIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("weekId not between", value1, value2, "weekId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMonthIdIsNull() {
+            addCriterion("monthId is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMonthIdIsNotNull() {
+            addCriterion("monthId is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andMonthIdEqualTo(Integer value) {
+            addCriterion("monthId =", value, "monthId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMonthIdNotEqualTo(Integer value) {
+            addCriterion("monthId <>", value, "monthId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMonthIdGreaterThan(Integer value) {
+            addCriterion("monthId >", value, "monthId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMonthIdGreaterThanOrEqualTo(Integer value) {
+            addCriterion("monthId >=", value, "monthId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMonthIdLessThan(Integer value) {
+            addCriterion("monthId <", value, "monthId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMonthIdLessThanOrEqualTo(Integer value) {
+            addCriterion("monthId <=", value, "monthId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMonthIdIn(List<Integer> values) {
+            addCriterion("monthId in", values, "monthId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMonthIdNotIn(List<Integer> values) {
+            addCriterion("monthId not in", values, "monthId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMonthIdBetween(Integer value1, Integer value2) {
+            addCriterion("monthId between", value1, value2, "monthId");
+            return (Criteria) this;
+        }
+
+        public Criteria andMonthIdNotBetween(Integer value1, Integer value2) {
+            addCriterion("monthId not between", value1, value2, "monthId");
+            return (Criteria) this;
+        }
     }
 
     public static class Criteria extends GeneratedCriteria {

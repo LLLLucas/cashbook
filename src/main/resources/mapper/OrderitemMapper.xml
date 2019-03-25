@@ -7,6 +7,8 @@
     <result column="userId" jdbcType="INTEGER" property="userId" />
     <result column="categoryId" jdbcType="INTEGER" property="categoryId" />
     <result column="dateId" jdbcType="INTEGER" property="dateId" />
+    <result column="weekId" jdbcType="INTEGER" property="weekId" />
+    <result column="monthId" jdbcType="INTEGER" property="monthId" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -38,7 +40,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, money, userId, categoryId, dateId
+    id, money, userId, categoryId, dateId, weekId, monthId
   </sql>
   <select id="selectByExample" parameterType="com.lucas.cashbook.pojo.OrderitemExample" resultMap="BaseResultMap">
     select
@@ -67,9 +69,11 @@
   </delete>
   <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.lucas.cashbook.pojo.Orderitem" useGeneratedKeys="true">
     insert into orderitem (money, userId, categoryId, 
-      dateId)
+      dateId, weekId, monthId
+      )
     values (#{money,jdbcType=REAL}, #{userId,jdbcType=INTEGER}, #{categoryId,jdbcType=INTEGER}, 
-      #{dateId,jdbcType=INTEGER})
+      #{dateId,jdbcType=INTEGER}, #{weekId,jdbcType=INTEGER}, #{monthId,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.lucas.cashbook.pojo.Orderitem" useGeneratedKeys="true">
     insert into orderitem
@@ -86,6 +90,12 @@
       <if test="dateId != null">
         dateId,
       </if>
+      <if test="weekId != null">
+        weekId,
+      </if>
+      <if test="monthId != null">
+        monthId,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="money != null">
@@ -99,6 +109,12 @@
       </if>
       <if test="dateId != null">
         #{dateId,jdbcType=INTEGER},
+      </if>
+      <if test="weekId != null">
+        #{weekId,jdbcType=INTEGER},
+      </if>
+      <if test="monthId != null">
+        #{monthId,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -117,6 +133,12 @@
       <if test="dateId != null">
         dateId = #{dateId,jdbcType=INTEGER},
       </if>
+      <if test="weekId != null">
+        weekId = #{weekId,jdbcType=INTEGER},
+      </if>
+      <if test="monthId != null">
+        monthId = #{monthId,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -125,7 +147,9 @@
     set money = #{money,jdbcType=REAL},
       userId = #{userId,jdbcType=INTEGER},
       categoryId = #{categoryId,jdbcType=INTEGER},
-      dateId = #{dateId,jdbcType=INTEGER}
+      dateId = #{dateId,jdbcType=INTEGER},
+      weekId = #{weekId,jdbcType=INTEGER},
+      monthId = #{monthId,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>
